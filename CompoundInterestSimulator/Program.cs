@@ -55,7 +55,7 @@ public static class Program
 
         var trigger = TriggerBuilder.Create()
             .WithIdentity("compoundInterestTrigger", "debt")
-            .StartNow()
+            .StartAt(DateBuilder.NextGivenSecondDate(DateTimeOffset.UtcNow.Add(Interval), 0)) 
             .WithSimpleSchedule(schedule => schedule
                 .WithInterval(Interval)
                 .RepeatForever())
